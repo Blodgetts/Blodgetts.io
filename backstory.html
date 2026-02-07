@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Backstory - Space Cat Adventures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(138, 43, 226, 0.8); }
+            to { text-shadow: 0 0 30px rgba(138, 43, 226, 1), 0 0 40px rgba(138, 43, 226, 0.8); }
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: rgba(74, 85, 104, 0.8);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(138, 43, 226, 0.8);
+            transform: scale(1.05);
+        }
+
+        .story-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .story-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8a2be2, #4169e1, #8a2be2);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .illustration {
+            width: 100%;
+            height: 400px;
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .illustration canvas {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        h2 {
+            color: #8a2be2;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        h3 {
+            color: #4169e1;
+            margin: 25px 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .twist-box {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #fff;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .twist-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        /* Animated stars background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .chapter-number {
+            display: inline-block;
+            background: #8a2be2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <header>
+        <h1>🌟 Chapter 1: The Backstory 🌟</h1>
+        <p>How Space Cat Met Grady and James</p>
+    </header>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <div class="story-container">
+        <div class="story-section">
+            <span class="chapter-number">Part 1</span>
+            <h2>🎮 The Digital Ocean</h2>
+            
+            <div class="illustration" id="illustration1"></div>
+
+            <p>
+                It was a Tuesday evening, and <span class="highlight">Grady</span> and <span class="highlight">James</span> 
+                were sitting in their rooms, thousands of miles apart, yet connected through the glowing screens of their 
+                computers. They had met weeks ago in Fisch, the wildly popular Roblox fishing game, where pixelated fish 
+                swam in digital waters and friendships were forged over rare catches.
+            </p>
+
+            <p>
+                "Dude, I just caught a Megalodon!" James's voice crackled through the headset, his avatar doing a victory dance 
+                on the virtual dock.
+            </p>
+
+            <p>
+                Grady laughed. "No way! I've been trying for weeks! What bait did you use?"
+            </p>
+
+            <p>
+                But before James could answer, something strange happened. The water in the game began to shimmer with colors 
+                that didn't belong in any normal game palette. Purples, silvers, and cosmic blues swirled together like a 
+                digital aurora.
+            </p>
+
+            <div class="twist-box">
+                <h4>🌠 PLOT TWIST #1</h4>
+                <p>
+                    A third player appeared in their private server. The username read: "✨CosmicWhiskers_9000✨" 
+                    But nobody had sent an invite. The server was locked. Impossible!
+                </p>
+            </div>
+
+            <h3>The Mysterious Catch</h3>
+            <p>
+                "Uh, Grady? Do you see that?" James whispered.
+            </p>
+
+            <p>
+                CosmicWhiskers_9000's avatar was unlike anything they'd seen before. It was a sleek, silver cat wearing a 
+                helmet that looked like it was made from starlight itself. Small galaxies swirled in the visor. The cat's 
+                tail had rings of Saturn orbiting around it.
+            </p>
+
+            <p>
+                The mysterious player cast a fishing line into the digital ocean. Immediately, the water erupted in a geyser 
+                of cosmic energy. When the spray settled, they saw it: a fish that looked like it was made of pure stardust, 
+                with nebula clouds forming its fins.
+            </p>
+
+            <p>
+                Then, the chat box lit up with a message: <em>"Greetings, young anglers. I am Captain Whiskers of the 
+                Felinus Galaxy. I've been watching your fishing skills. Impressive. But tell me... have you ever wondered 
+                what it would be like to fish in REAL space?"</em>
+            </p>
+        </div>
+
+        <div class="story-section">
+            <span class="chapter-number">Part 2</span>
+            <h2>🚀 The Impossible Proposition</h2>
+
+            <div class="illustration" id="illustration2"></div>
+
+            <p>
+                Grady and James exchanged confused looks through their webcams. Was this some kind of elaborate prank? 
+                A hacker? A weird game update?
+            </p>
+
+            <p>
+                "Um... space fishing?" Grady typed hesitantly. "That's not... real?"
+            </p>
+
+            <p>
+                The cosmic cat's avatar began to glow brighter. <em>"Oh, but it is, young Grady. Just as real as the 
+                chair you're sitting in. More real, even. I've traveled across 47 galaxies searching for the perfect 
+                crew for my ship, The Stardust Angler. Your teamwork, your persistence, your friendship... it's exactly 
+                what I need."</em>
+            </p>
+
+            <p>
+                James's fingers flew over his keyboard. "Okay, this is either the coolest thing ever or we're both having 
+                the same weird dream. If you're really from space, prove it!"
+            </p>
+
+            <div class="twist-box">
+                <h4>🌠 PLOT TWIST #2</h4>
+                <p>
+                    Suddenly, both Grady's and James's computers began to shake. Not just vibrate, but actually levitate 
+                    off their desks! Blue light poured from the screens, filling their rooms with an otherworldly glow. 
+                    And then... their bedroom walls started to pixelate, breaking apart like blocks in Minecraft!
+                </p>
+            </div>
+
+            <h3>The Portal Opens</h3>
+
+            <p>
+                Through the dissolving walls, Grady and James could see each other for the first time in real life, 
+                even though Grady was in Colorado and James was in California. Between them, hovering in impossible 
+                space, was a magnificent silver spaceship shaped like a giant fishing rod, with solar sails that 
+                sparkled like fish scales.
+            </p>
+
+            <p>
+                And standing in the airlock, waving a paw at them, was Space Cat. He was real. About four feet tall, 
+                walking on his hind legs, wearing a spacesuit that seemed to be made of liquid mercury and starlight. 
+                His eyes glowed with the light of distant suns.
+            </p>
+
+            <p>
+                "Well?" Space Cat's voice came through, no longer text but warm and purring. "Are you ready for the 
+                adventure of a lifetime? I should warn you though..." He grinned, showing teeth that sparkled like 
+                diamonds. "Space fishing is not for the faint of heart. We'll be catching comet koi, nebula squid, 
+                and if we're lucky... the legendary Void Whale."
+            </p>
+        </div>
+
+        <div class="story-section">
+            <span class="chapter-number">Part 3</span>
+            <h2>🌌 The Decision</h2>
+
+            <div class="illustration" id="illustration3"></div>
+
+            <p>
+                Grady looked at James. James looked at Grady. They'd been best friends in Roblox for months, but they'd 
+                never imagined they'd meet like this. Never imagined they'd have to make a choice like this.
+            </p>
+
+            <p>
+                "My mom is going to freak out," Grady muttered.
+            </p>
+
+            <p>
+                "Dude, our moms are going to think we got kidnapped by aliens," James added.
+            </p>
+
+            <p>
+                Space Cat's whiskers twitched with amusement. "Oh, don't worry about that. Time works differently in 
+                space. We could be gone for weeks, and only five minutes would pass on Earth. Plus, I'll leave holographic 
+                duplicates of you to cover your absence. They'll do your homework and everything!"
+            </p>
+
+            <div class="twist-box">
+                <h4>🌠 PLOT TWIST #3</h4>
+                <p>
+                    "There's just one small thing I should mention," Space Cat said, his tail swishing nervously. 
+                    "The reason I need your help... I'm being chased by the Galactic Fishing Federation. You see, 
+                    I may have accidentally caught the Emperor's prized Dark Matter Goldfish last month. They want 
+                    it back. But here's the thing... I ate it. It was delicious. So now we're technically... space pirates!"
+                </p>
+            </div>
+
+            <h3>The Leap of Faith</h3>
+
+            <p>
+                Grady and James looked at each other one more time. Space pirates. Fishing in nebulas. Adventures across 
+                the cosmos with a cat from another galaxy. It was insane. It was impossible. It was...
+            </p>
+
+            <p>
+                "AWESOME!" they shouted in unison.
+            </p>
+
+            <p>
+                Without another word, they both jumped through the pixelated walls of their rooms, tumbling through 
+                impossible space, laughing and shouting, until they landed with soft thuds on the deck of The Stardust 
+                Angler.
+            </p>
+
+            <p>
+                Space Cat pulled them to their feet, his purr rumbling like a small engine. "Welcome aboard, crew! 
+                I knew you two were special the moment I saw you catch that synchronized double rainbow trout. 
+                Now, let me show you your quarters, introduce you to the ship's AI (her name is M.E.O.W. - Multiversal 
+                Exploration and Orbital Waypoint), and then..."
+            </p>
+
+            <p>
+                He paused dramatically, his eyes twinkling with mischief.
+            </p>
+
+            <p>
+                "Then we're going to jump to light speed and fish in the Rings of Saturn. I hear the cosmic salmon 
+                are running this time of year. And after that? We've got a date with destiny, danger, and possibly... 
+                the greatest fish that ever existed in all of space and time!"
+            </p>
+
+            <p>
+                As The Stardust Angler's engines began to hum with power, Grady and James stood at the viewing window, 
+                watching Earth grow smaller behind them. Their Roblox adventure had just become real. And somewhere out 
+                there in the infinite cosmos, fish were waiting to be caught, mysteries were waiting to be solved, and 
+                the Galactic Fishing Federation was waiting to find them.
+            </p>
+
+            <p style="text-align: center; font-size: 1.5em; margin-top: 40px; color: #8a2be2;">
+                <strong>To be continued...</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create animated starfield
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Illustration 1: Roblox fishing scene
+        function drawIllustration1() {
+            const container = document.getElementById('illustration1');
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            container.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            
+            let time = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Sky gradient
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, '#1a1a3e');
+                gradient.addColorStop(1, '#0f0c29');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 800, 400);
+                
+                // Stars
+                for (let i = 0; i < 50; i++) {
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(Math.sin(i) * 400 + 400, Math.cos(i) * 200 + 100, 2, 2);
+                }
+                
+                // Water
+                ctx.fillStyle = '#1e3a8a';
+                ctx.fillRect(0, 250, 800, 150);
+                
+                // Animated waves
+                ctx.strokeStyle = '#3b82f6';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                for (let x = 0; x < 800; x++) {
+                    ctx.lineTo(x, 250 + Math.sin(x * 0.02 + time) * 5);
+                }
+                ctx.stroke();
+                
+                // Dock
+                ctx.fillStyle = '#8b4513';
+                ctx.fillRect(0, 230, 200, 20);
+                ctx.fillRect(50, 180, 15, 50);
+                ctx.fillRect(150, 180, 15, 50);
+                
+                // Roblox-style avatars
+                // Avatar 1 (Grady)
+                ctx.fillStyle = '#4169e1';
+                ctx.fillRect(50, 180, 30, 50);
+                ctx.fillStyle = '#87ceeb';
+                ctx.fillRect(55, 160, 20, 20);
+                
+                // Avatar 2 (James)
+                ctx.fillStyle = '#32cd32';
+                ctx.fillRect(150, 180, 30, 50);
+                ctx.fillStyle = '#ffd700';
+                ctx.fillRect(155, 160, 20, 20);
+                
+                // Mysterious cosmic cat
+                const catX = 400 + Math.sin(time * 0.05) * 20;
+                const catY = 180 + Math.cos(time * 0.1) * 10;
+                
+                // Cat glow
+                ctx.fillStyle = 'rgba(138, 43, 226, 0.3)';
+                ctx.beginPath();
+                ctx.arc(catX, catY, 40, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Cat body
+                ctx.fillStyle = '#c0c0c0';
+                ctx.fillRect(catX - 15, catY, 30, 40);
+                
+                // Cat head
+                ctx.fillStyle = '#c0c0c0';
+                ctx.beginPath();
+                ctx.arc(catX, catY - 5, 20, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Ears
+                ctx.beginPath();
+                ctx.moveTo(catX - 15, catY - 10);
+                ctx.lineTo(catX - 10, catY - 25);
+                ctx.lineTo(catX - 5, catY - 10);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.moveTo(catX + 15, catY - 10);
+                ctx.lineTo(catX + 10, catY - 25);
+                ctx.lineTo(catX + 5, catY - 10);
+                ctx.fill();
+                
+                // Helmet visor (with galaxy)
+                const visorGradient = ctx.createRadialGradient(catX, catY - 5, 5, catX, catY - 5, 15);
+                visorGradient.addColorStop(0, '#8a2be2');
+                visorGradient.addColorStop(0.5, '#4169e1');
+                visorGradient.addColorStop(1, '#000033');
+                ctx.fillStyle = visorGradient;
+                ctx.beginPath();
+                ctx.arc(catX, catY - 5, 12, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Cosmic fish
+                const fishX = 600 + Math.sin(time * 0.1) * 50;
+                const fishY = 300 + Math.cos(time * 0.08) * 30;
+                
+                ctx.save();
+                ctx.translate(fishX, fishY);
+                ctx.rotate(time * 0.05);
+                
+                // Fish glow
+                const fishGradient = ctx.createRadialGradient(0, 0, 10, 0, 0, 30);
+                fishGradient.addColorStop(0, '#ffd700');
+                fishGradient.addColorStop(0.5, '#ff69b4');
+                fishGradient.addColorStop(1, 'rgba(138, 43, 226, 0)');
+                ctx.fillStyle = fishGradient;
+                ctx.beginPath();
+                ctx.arc(0, 0, 30, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Fish body
+                ctx.fillStyle = '#ff1493';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 25, 15, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Tail
+                ctx.beginPath();
+                ctx.moveTo(-25, 0);
+                ctx.lineTo(-40, -10);
+                ctx.lineTo(-40, 10);
+                ctx.closePath();
+                ctx.fill();
+                
+                ctx.restore();
+                
+                time += 0.05;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Illustration 2: Portal opening scene
+        function drawIllustration2() {
+            const container = document.getElementById('illustration2');
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            container.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            
+            let time = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Dark background
+                ctx.fillStyle = '#0a0a1a';
+                ctx.fillRect(0, 0, 800, 400);
+                
+                // Portal effect
+                const portalX = 400;
+                const portalY = 200;
+                const portalSize = 100 + Math.sin(time) * 20;
+                
+                // Outer rings
+                for (let i = 5; i > 0; i--) {
+                    const gradient = ctx.createRadialGradient(portalX, portalY, 0, portalX, portalY, portalSize + i * 20);
+                    gradient.addColorStop(0, `rgba(138, 43, 226, ${0.8 - i * 0.1})`);
+                    gradient.addColorStop(0.5, `rgba(65, 105, 225, ${0.6 - i * 0.1})`);
+                    gradient.addColorStop(1, 'rgba(138, 43, 226, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(portalX, portalY, portalSize + i * 20, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Inner portal
+                const innerGradient = ctx.createRadialGradient(portalX, portalY, 0, portalX, portalY, portalSize);
+                innerGradient.addColorStop(0, '#ffffff');
+                innerGradient.addColorStop(0.3, '#8a2be2');
+                innerGradient.addColorStop(0.7, '#4169e1');
+                innerGradient.addColorStop(1, '#000033');
+                ctx.fillStyle = innerGradient;
+                ctx.beginPath();
+                ctx.arc(portalX, portalY, portalSize, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Swirling particles
+                for (let i = 0; i < 50; i++) {
+                    const angle = (time + i * 0.3) % (Math.PI * 2);
+                    const radius = 50 + (i % 5) * 20;
+                    const x = portalX + Math.cos(angle) * radius;
+                    const y = portalY + Math.sin(angle) * radius;
+                    
+                    ctx.fillStyle = `rgba(255, ${200 - i * 3}, 255, ${0.8 - (i % 5) * 0.15})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Pixelating room on left
+                const blockSize = 10;
+                for (let x = 0; x < 300; x += blockSize) {
+                    for (let y = 0; y < 400; y += blockSize) {
+                        const opacity = 0.3 + Math.random() * 0.4 + Math.sin(time + x * 0.1) * 0.2;
+                        ctx.fillStyle = `rgba(100, 100, 150, ${opacity})`;
+                        ctx.fillRect(x, y, blockSize - 1, blockSize - 1);
+                    }
+                }
+                
+                // Pixelating room on right
+                for (let x = 500; x < 800; x += blockSize) {
+                    for (let y = 0; y < 400; y += blockSize) {
+                        const opacity = 0.3 + Math.random() * 0.4 + Math.sin(time + x * 0.1) * 0.2;
+                        ctx.fillStyle = `rgba(100, 150, 100, ${opacity})`;
+                        ctx.fillRect(x, y, blockSize - 1, blockSize - 1);
+                    }
+                }
+                
+                // Spaceship silhouette emerging from portal
+                ctx.fillStyle = `rgba(192, 192, 192, ${0.3 + Math.sin(time * 2) * 0.3})`;
+                ctx.beginPath();
+                ctx.ellipse(portalX, portalY, 60, 30, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Energy bolts
+                for (let i = 0; i < 3; i++) {
+                    const boltAngle = time * 2 + i * (Math.PI * 2 / 3);
+                    const boltX = portalX + Math.cos(boltAngle) * 150;
+                    const boltY = portalY + Math.sin(boltAngle) * 150;
+                    
+                    ctx.strokeStyle = `rgba(138, 43, 226, 0.8)`;
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(portalX, portalY);
+                    ctx.lineTo(boltX, boltY);
+                    ctx.stroke();
+                }
+                
+                time += 0.05;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Illustration 3: The Stardust Angler ship
+        function drawIllustration3() {
+            const container = document.getElementById('illustration3');
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 400;
+            container.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            
+            let time = 0;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Space background
+                const bgGradient = ctx.createLinearGradient(0, 0, 0, 400);
+                bgGradient.addColorStop(0, '#000033');
+                bgGradient.addColorStop(0.5, '#1a1a4e');
+                bgGradient.addColorStop(1, '#000033');
+                ctx.fillStyle = bgGradient;
+                ctx.fillRect(0, 0, 800, 400);
+                
+                // Stars
+                for (let i = 0; i < 200; i++) {
+                    const starX = (Math.sin(i * 12.345) * 400 + 400) % 800;
+                    const starY = (Math.cos(i * 23.456) * 200 + 200) % 400;
+                    const brightness = 0.3 + Math.sin(time + i) * 0.7;
+                    ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`;
+                    const size = 1 + (i % 3);
+                    ctx.fillRect(starX, starY, size, size);
+                }
+                
+                // Earth in the distance
+                ctx.save();
+                ctx.translate(150, 100);
+                const earthGradient = ctx.createRadialGradient(0, 0, 20, 0, 0, 50);
+                earthGradient.addColorStop(0, '#4169e1');
+                earthGradient.addColorStop(0.6, '#1e90ff');
+                earthGradient.addColorStop(1, '#000033');
+                ctx.fillStyle = earthGradient;
+                ctx.beginPath();
+                ctx.arc(0, 0, 50, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Earth continents
+                ctx.fillStyle = '#228b22';
+                ctx.beginPath();
+                ctx.arc(-15, -10, 15, 0, Math.PI * 2);
+                ctx.arc(10, 5, 20, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                
+                // The Stardust Angler spaceship
+                const shipX = 400 + Math.sin(time * 0.5) * 20;
+                const shipY = 250 + Math.cos(time * 0.3) * 10;
+                
+                ctx.save();
+                ctx.translate(shipX, shipY);
+                
+                // Ship glow
+                const shipGlow = ctx.createRadialGradient(0, 0, 50, 0, 0, 100);
+                shipGlow.addColorStop(0, 'rgba(138, 43, 226, 0.3)');
+                shipGlow.addColorStop(1, 'rgba(138, 43, 226, 0)');
+                ctx.fillStyle = shipGlow;
+                ctx.beginPath();
+                ctx.arc(0, 0, 100, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Main hull (fishing rod shape)
+                ctx.fillStyle = '#c0c0c0';
+                ctx.fillRect(-60, -10, 120, 20);
+                
+                // Cockpit
+                const cockpitGradient = ctx.createRadialGradient(0, 0, 10, 0, 0, 25);
+                cockpitGradient.addColorStop(0, '#87ceeb');
+                cockpitGradient.addColorStop(1, '#4169e1');
+                ctx.fillStyle = cockpitGradient;
+                ctx.beginPath();
+                ctx.arc(50, 0, 25, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Windows
+                ctx.fillStyle = '#add8e6';
+                ctx.beginPath();
+                ctx.arc(50, 0, 15, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Silhouettes in window
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                ctx.fillRect(40, -5, 5, 8);
+                ctx.fillRect(48, -5, 5, 8);
+                ctx.fillRect(56, -5, 5, 8);
+                
+                // Solar sails (like fish scales)
+                for (let i = 0; i < 3; i++) {
+                    ctx.save();
+                    ctx.translate(-20 - i * 15, -30);
+                    ctx.rotate(Math.sin(time + i) * 0.2);
+                    
+                    const sailGradient = ctx.createLinearGradient(0, 0, 0, 40);
+                    sailGradient.addColorStop(0, '#ffd700');
+                    sailGradient.addColorStop(0.5, '#ff69b4');
+                    sailGradient.addColorStop(1, '#8a2be2');
+                    ctx.fillStyle = sailGradient;
+                    ctx.fillRect(0, 0, 25, 40);
+                    
+                    // Scale pattern
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                    ctx.lineWidth = 1;
+                    for (let j = 0; j < 4; j++) {
+                        ctx.beginPath();
+                        ctx.arc(12, j * 10, 8, 0, Math.PI);
+                        ctx.stroke();
+                    }
+                    
+                    ctx.restore();
+                }
+                
+                // Engine glow
+                const engineGradient = ctx.createRadialGradient(-60, 0, 5, -60, 0, 20);
+                engineGradient.addColorStop(0, '#00ffff');
+                engineGradient.addColorStop(0.5, '#0099ff');
+                engineGradient.addColorStop(1, 'rgba(0, 153, 255, 0)');
+                ctx.fillStyle = engineGradient;
+                ctx.beginPath();
+                ctx.arc(-60, 0, 20, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Exhaust trail
+                for (let i = 0; i < 10; i++) {
+                    const trailX = -70 - i * 8;
+                    const trailY = (Math.sin(time * 2 + i) * 3);
+                    const trailSize = 15 - i;
+                    const opacity = 0.5 - i * 0.05;
+                    
+                    ctx.fillStyle = `rgba(0, 200, 255, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(trailX, trailY, trailSize, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Fishing line extending from ship
+                ctx.strokeStyle = 'rgba(255, 215, 0, 0.6)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(0, 10);
+                ctx.lineTo(0, 80);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // Cosmic lure
+                ctx.save();
+                ctx.translate(0, 80 + Math.sin(time * 3) * 10);
+                const lureGradient = ctx.createRadialGradient(0, 0, 3, 0, 0, 8);
+                lureGradient.addColorStop(0, '#ffff00');
+                lureGradient.addColorStop(1, '#ff00ff');
+                ctx.fillStyle = lureGradient;
+                ctx.beginPath();
+                ctx.arc(0, 0, 8, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                
+                ctx.restore();
+                
+                // Shooting stars
+                for (let i = 0; i < 3; i++) {
+                    const starTrailX = ((time * 100 + i * 200) % 900) - 50;
+                    const starTrailY = 50 + i * 100;
+                    
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(starTrailX, starTrailY);
+                    ctx.lineTo(starTrailX - 30, starTrailY + 30);
+                    ctx.stroke();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.beginPath();
+                    ctx.arc(starTrailX, starTrailY, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                time += 0.05;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Initialize all illustrations
+        drawIllustration1();
+        drawIllustration2();
+        drawIllustration3();
+    </script>
+</body>
+</html>
